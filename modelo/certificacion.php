@@ -1,7 +1,7 @@
 <?php
  require_once("autoload.php");
 
-class cliente extends Conexion {
+class certificacion extends Conexion {
     private $ID_CLIENTE;
     private $ID_PRODUCTO;
     private $TIPO_DOC;

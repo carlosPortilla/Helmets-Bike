@@ -30,7 +30,7 @@ class Conexion{
     private $conect;
 
     public function __construct(){
-        $connectionString = "mysql:hos=".$this->servidor.$this->db.";charset=utf8";
+        $connectionString = "mysql:hos=".$this->servidor.";dbname=".$this->db.";charset=utf8";
         try{
             $this->conect = new PDO($connectionString,$this->usuario,$this->password);
             $this->conect->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);

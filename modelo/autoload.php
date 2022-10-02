@@ -1,4 +1,4 @@
-<!-- <?php
+ <?php
 function autoload($clase){
     
     require_once($clase.".php");
@@ -6,5 +6,4 @@ function autoload($clase){
 spl_autoload_register("autoload");
 
 
-
-?> -->
+?>
