@@ -1,114 +1,54 @@
 <?php
-class cliente extends conexion {
-    /*
-     *  obtener el registro de todos los usuarios registrados en la DB
-     */
-    
-    public function get_all()
-    {
-        try {
-            $r = parent::connect()->prepare("SELECT * FROM cliente");
-            echo "RESULTADO".$r;
-            $r->execute();
-            return $r->fetchAll(PDO::FETCH_OBJ);
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
-}
 
+class cliente extends Conexion {
+    private $ID_CLIENTE;
+    private $ID_PRODUCTO;
+    private $TIPO_DOC;
+    private $NUM_DOC;
+    private $DIRECCION;
+    private $NOMBRE;
+    private $APELLIDO;
+    private $EDAD;
+    private $CORREO;
+    private $TELEFONO;
+    private $conexion;
+    private $conectar;
 
+    public function __construct(){
+//     $this->conexion = new Conexion();  
+//     $this->conexion = $this->conexion->connect();
 
-    // public function guardar_u($numero_documento, $fk_id_tipodoc, $primer_nombre, $segundo_nombre, 
-    // $primer_apellido, $segundo_apellido, $departamento, $ciudad, $direccion, $email, $password,
-    //  $telefono, $fk_id_rol, $estado)
-    // {
-    //     try {
-    //         $r = parent::connect()->prepare("INSERT INTO usuario(
-    //             numero_documento,
-    //             fk_id_tipodoc,
-    //             primer_nombre,
-    //             segundo_nombre,
-    //             primer_apellido,
-    //             segundo_apellido,
-    //             departamento,
-    //             ciudad,
-    //             direccion,
-    //             email,
-    //             password,
-    //             telefono,
-    //             fk_id_rol,
-    //             estado
-    //             )
-    //              VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-    //         $r->bindParam(1, $numero_documento, PDO::PARAM_STR);
-    //         $r->bindParam(2, $fk_id_tipodoc, PDO::PARAM_STR);
-    //         $r->bindParam(3, $primer_nombre, PDO::PARAM_STR);
-    //         $r->bindParam(4, $segundo_nombre, PDO::PARAM_STR);
-    //         $r->bindParam(5, $primer_apellido, PDO::PARAM_STR);
-    //         $r->bindParam(6, $segundo_apellido, PDO::PARAM_STR);
-    //         $r->bindParam(7, $departamento, PDO::PARAM_STR);
-    //         $r->bindParam(8, $ciudad, PDO::PARAM_STR);
-    //         $r->bindParam(9, $direccion, PDO::PARAM_STR);
-    //         $r->bindParam(10, $email, PDO::PARAM_STR);
-    //         $r->bindParam(11, $password, PDO::PARAM_STR);
-    //         // $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-    //         // $r->bindParam(':password', $password);
-    //         $r->bindParam(12, $telefono, PDO::PARAM_INT);
-    //         $r->bindParam(13, $fk_id_rol, PDO::PARAM_INT);
-    //         $r->bindParam(14, $estado, PDO::PARAM_INT);
-    //             // print_r($r);die;
-    //         $r->execute();
-    //     } catch (Exception $e) {
-    //         die($e->getMessage());
-    //     }
-    // }
+// }   
+// // public function insertCliente(int $numeroCliente,int $numeroProducto,string $tipoDocumento,int $numeroDocumento,string $direccion, string $nombre, string $apellido, string $edad, string $correo, int $telefono)
+// // {
+// //     $this->ID_CLIENTE=$numeroCliente;
+// //     $this->ID_PRODUCTO=$numeroProducto;
+// //     $this->TIPO_DOC=$tipoDocumento;
+// //     $this->NUM_DOC=$numeroDocumento;
+// //     $this->DIRECCION=$direccion;
+// //     $this->NOMBRE=$nombre;
+// //     $this->APELLIDO=$apellido;
+// //     $this->EDAD=$edad;
+// //     $this->CORREO=$correo;
+// //     $this->TELEFONO=$telefono;
 
-    // public function update_r($id_rol)
-    // {
-    //     try {
-    //         $r = parent::connect()->prepare("SELECT * FROM usuario WHERE id_rol = ?");
-    //         $r->bindParam(1, $id_rol, PDO::PARAM_INT);
-    //         $r->execute();
-    //         return $r->fetch(PDO::FETCH_OBJ);
-    //     } catch (Exception $e) {
-    //         die($e->getMessage());
-    //     }
-    // }
+// //     $sql = "INSERT INTO cliente (ID_CLIENTE, ID_PRODUCTO, TIPO_DOC, NUM_DOC, DIRECCION, NOMBRE, APELLIDO, EDAD, CORREO, TELEFONO) VALUES(?,?,?,?,?,?,?,?,?,?)";
+// //     $insert = $this->conexion->prepare($sql);
+// //     $arrData = array($this->ID_CLIENTE, $this->ID_PRODUCTO,$this->TIPO_DOC,$this->NUM_DOC,$this->DIRECCION,$this->NOMBRE,$this->APELLIDO,$this->EDAD,$this->CORREO,$this->TELEFONO);
+// //     $resInsert= $insert->execute($arrData);
+// //     $idInsert =$this->conexion->LastInsertId();
+// //     return $idInsert;
 
-    // public function delete_r($id_rol)
-    // {
-    //     try {
-    //         $r = parent::connect()->prepare("DELETE FROM rol WHERE id_rol = ?");
-    //         $r->bindParam(1, $id_rol, PDO::PARAM_INT);
-    //         $r->execute();
-    //         //$r->execute(array(':id_producto'=> $id_producto));
-    //     } catch (Exception $e) {
-    //         die($e->getMessage());
-    //     }
-    // }
+// //  }
+// public function getcliente()
+// {
+//     $sql = "SELECT * FROM cliente";
+//     $execute = $this->conexion->query($sql);
+//     $request = $execute->fetchall(PDO::FETCH_ASSOC);
+//     return $request;
 
-    // public function details_r($id)
-    // {
-    //     try {
-    //         $r = parent::connect()->prepare("SELECT * FROM rol WHERE id_rol = ?");
-    //         $r->bindParam(1, $id, PDO::PARAM_INT);
-    //         $r->execute();
-    //         return $r->fetch(PDO::FETCH_OBJ); // trae un solo registro
-    //     } catch (Exception $e) {
-    //         die($e->getMessage());
-    //     }
-    // }
-
-//     public function get_email($email)
-//     {
-//         try {
-//             $r = parent::connect()->prepare("SELECT * FROM usuario WHERE email =?");
-//             $r->bindParam(1, $email, PDO::PARAM_STR);
-//             $r->execute();
-//             return $r->fetch(PDO::FETCH_OBJ);
-//         } catch (Exception $e) {
-//             die($e->getMessage());
-//         }
-//     }
 // }
+// }
+// ?>
+
+
