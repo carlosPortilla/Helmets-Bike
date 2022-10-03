@@ -47,4 +47,11 @@
         </div>
     </body>
 </html>
-
+<?php
+require_once("../../modelos/cliente.php")
+    //$datosLectura = new clienteService();
+    //$datosDeTabla = $datosLectura->lectura();
+    $leer = new cliente();
+    $datos = $leer->getClientes();
+    echo $leer;
+?> 

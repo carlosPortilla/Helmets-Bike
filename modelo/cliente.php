@@ -51,6 +51,8 @@ class cliente extends Conexion {
 
  }
  }
+ $lectura = new clientes();
+ $leerm = $lectura->getClientes();
 ?>
 
 
